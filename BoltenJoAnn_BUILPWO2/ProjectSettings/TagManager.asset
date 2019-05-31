@@ -8,6 +8,13 @@ TagManager:
   - Target
   - Egg
   - Egg Ingredient
+  - Milk
+  - Milk Ingredient
+  - ResetButton
+  - DropButton
+  - Bread
+  - Bread Ingredient
+  - RestartButton
   layers:
   - Default
   - TransparentFX
