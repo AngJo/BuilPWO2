@@ -7,6 +7,7 @@ public class ButtonScript : MonoBehaviour {
 
     public GameObject ingredient;
     private GameObject trigger;
+    private float speed = 1.0f;
 
     private void Update()
     {
@@ -33,6 +34,8 @@ public class ButtonScript : MonoBehaviour {
                     Debug.Log("This is the drop button");
                     if (GameObject.FindWithTag("Egg Ingredient") != null)
                     {
+                        float step = speed * Time.deltaTime;
+                        transform.localPosition = Vector3.MoveTowards(transform.localPosition, new Vector3(0.068f, -0.3f, -0.455f), step);
                         ingredient = GameObject.FindWithTag("Egg Ingredient");
                         Rigidbody ingredientRb = ingredient.GetComponent<Rigidbody>();
                         ingredientRb.useGravity = true;
@@ -47,9 +50,9 @@ public class ButtonScript : MonoBehaviour {
 
                 else if (hit.collider.CompareTag("BakeButton"))
                 {
-                    //trigger = GameObject.FindWithTag("Trigger");
-                    //BakeScript bake = trigger.GetComponent<BakeScript>();
-                    BakeScript bake = GetComponent<BakeScript>();
+                    trigger = GameObject.FindWithTag("BakeButton");
+                    BakeScript bake = trigger.GetComponent<BakeScript>();
+                    //BakeScript bake = GetComponent<BakeScript>();
                     bake.BakeCake();
                 }
             }

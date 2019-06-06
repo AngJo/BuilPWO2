@@ -15,6 +15,7 @@ TagManager:
   - Bread
   - Bread Ingredient
   - RestartButton
+  - BakeButton
   layers:
   - Default
   - TransparentFX

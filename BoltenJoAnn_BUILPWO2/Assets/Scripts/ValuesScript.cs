@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class ValuesScript : MonoBehaviour {
 
-    public int value = 1;
+    public int value = 0;
 }

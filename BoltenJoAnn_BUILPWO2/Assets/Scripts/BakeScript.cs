@@ -1,12 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class BakeScript : MonoBehaviour {
 
-    private int eggSize = 0;
-    private int milkSize = 0;
-    private int breadSize = 0;
+
+    private int eggSizeTemp;
+    private int eggSize
+    {
+        set { print(eggSizeTemp); print(value); eggSizeTemp = value; }
+        get { return eggSizeTemp; }
+    }
+    private int milkSize;
+    private int breadSize;
 
     private int correctEggValue = 4;
     private int correctMilkValue = 20;
@@ -28,27 +34,28 @@ public class BakeScript : MonoBehaviour {
             Debug.Log("Egg size is");
             Debug.Log(eggSize);
         }
-        else if (other.tag == "Milk Ingredient")
-        {
-            ValuesScript milkValue = other.GetComponent<ValuesScript>();
-            eggSize = milkValue.value;
-            Debug.Log("Milk size is");
-            Debug.Log(milkSize);
-        }
-        else if (other.tag == "Bread Ingredient")
-        {
-            ValuesScript breadValue = other.GetComponent<ValuesScript>();
-            eggSize = breadValue.value;
-            Debug.Log("Bread size is");
-            Debug.Log(breadSize);
-        }
+        //else if (other.tag == "Milk Ingredient")
+        //{
+        //    ValuesScript milkValue = other.GetComponent<ValuesScript>();
+        //    eggSize = milkValue.value;
+        //    Debug.Log("Milk size is");
+        //    Debug.Log(milkSize);
+        //}
+        //else if (other.tag == "Bread Ingredient")
+        //{
+        //    ValuesScript breadValue = other.GetComponent<ValuesScript>();
+        //    eggSize = breadValue.value;
+        //    Debug.Log("Bread size is");
+        //    Debug.Log(breadSize);
+        //}
     }
 
     public void BakeCake()
     {
+        Debug.Log(eggSize);
         
         //check ingredients in Trigger
-        if(eggSize == correctEggValue && milkSize == correctMilkValue && breadSize == correctBreadValue)
+        if(eggSize == correctEggValue) //&& milkSize == correctMilkValue && breadSize == correctBreadValue)
         {
             //Instantiate a Cake
             winCake = (GameObject)Instantiate(cake, pos);
@@ -70,8 +77,10 @@ public class BakeScript : MonoBehaviour {
 
     void EndGame()
     {
-        Player player = GetComponent<Player>();
-        player.alive = false;
+        GameObject player = GameObject.FindWithTag("Player");
+        Player pl = player.GetComponent<Player>();
+        
+        pl.alive = false;
         Time.timeScale = 0;
         //Show Start Menu or Try again Button
     }

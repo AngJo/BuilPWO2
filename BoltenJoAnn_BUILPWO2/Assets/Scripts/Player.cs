@@ -9,7 +9,7 @@ public class Player : MonoBehaviour {
 
     public Transform hand;
     public GameObject animal;
-    public Vector3 throwDirection;
+    //public Vector3 throwDirection;
     
 
     public GameObject bulletEmitter;
@@ -54,7 +54,7 @@ public class Player : MonoBehaviour {
                 animal.transform.parent = null;
                 
                 animalRb.isKinematic = false;
-                animalRb.AddForce(throwDirection, ForceMode.Impulse);
+                animalRb.AddForce(Camera.main.transform.forward * 10f, ForceMode.Impulse);
             }
 
             //Check Which Animal I have and shoot a bullet
@@ -103,6 +103,10 @@ public class Player : MonoBehaviour {
                     if (hit.collider.CompareTag("Animal"))
                     {
                         hit.transform.SetParent(hand, false);
+                        hit.transform.localPosition = Vector3.zero;
+                        animalRb = hit.transform.GetComponent<Rigidbody>();
+                        animalRb.isKinematic = true;
+                        hit.transform.localRotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
                         if (hit.collider.name == "Bread") { hit.transform.localPosition = new Vector3(-0.098f, 0.462f, 0); }
                         else { hit.transform.localPosition = Vector3.zero; }
                        

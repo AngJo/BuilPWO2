@@ -58,9 +58,9 @@ public class Target : MonoBehaviour {
         switch (this.name)
         {
             case "MilkTarget": bullet = "Milk"; ingredientName = "Milk Ingredient"; pos = milkPos; break;
-            case "EggTarget": bullet = "Egg"; ingredientName = "Egg Target"; pos = eggPos; break;
-            case "BreadTarget": bullet = "Bread"; ingredientName = "Bread Target"; pos = breadPos; break;
-            default: bullet = "Egg"; ingredientName = "Egg Target"; break;
+            case "EggTarget": bullet = "Egg"; ingredientName = "Egg Ingredient"; pos = eggPos; break;
+            case "BreadTarget": bullet = "Bread"; ingredientName = "Bread Ingredient"; pos = breadPos; break;
+            default: bullet = "Egg"; ingredientName = "Egg Ingredient"; break;
         }
     }
 
