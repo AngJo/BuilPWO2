@@ -28,9 +28,13 @@ public class PauseMenu : MonoBehaviour {
 
     void Pause()
     {
-        PauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
+        if(GameManager.Instance.winLoseMenu.activeSelf != true)
+        {
+            PauseMenuUI.SetActive(true);
+            Time.timeScale = 0f;
+            GameIsPaused = true;
+        }
+        
     }
 
     public void RestartGame()
@@ -38,6 +42,7 @@ public class PauseMenu : MonoBehaviour {
         Debug.Log("Restarting Game");
         //reload current scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
     }
 
     public void Quit()

@@ -7,11 +7,13 @@ public class MainMenu : MonoBehaviour {
 
 	public void PlayButton()
     {
+        FindObjectOfType<AudioManager>().Play("uiPos");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void QuitGame()
     {
+        FindObjectOfType<AudioManager>().Play("uiClose");
         Debug.Log("Quit Game");
         Application.Quit();
     }
